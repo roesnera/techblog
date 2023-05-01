@@ -1,6 +1,6 @@
-
+import "./Article.css";
 
 export default function Article() {
 
-    return <div>Article</div>
+    return <div className="article">Article</div>
 }
