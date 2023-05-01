@@ -17,7 +17,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(root, "index.html"),
-        about: path.resolve(root, "About", "index.html")
+        about: path.resolve(root, "About", "index.html"),
+        articles: path.resolve(root, "Articles", "index.html")
       }
     }
   }
