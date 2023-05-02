@@ -1,10 +1,7 @@
 /* Styles for ArticlePage.jsx */
-html, * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url("../../reset.css");
 
-html {
-    font-size: 100%;
+.articles-container {
+    height: 70vh;
+    padding: 3rem;
 }

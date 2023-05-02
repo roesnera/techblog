@@ -1,0 +1,8 @@
+.home-bottom {
+    height: 60%;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    --delay: 0;
+}

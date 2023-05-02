@@ -26,7 +26,7 @@ export default function HomeBottomSection() {
 
     const renderedArticles = renderArticles();
   
-  return <div>
+  return <div className='home-bottom'>
     {renderedArticles}
   </div>;
 }
