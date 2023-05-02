@@ -1,1 +1,7 @@
 /* Styles for Footer.jsx */
+footer {
+    border-top: 1px solid black;
+    height: 10rem;
+    display: grid;
+    grid-template-columns: [start] 25% [median] auto [end];
+}

@@ -1,1 +1,31 @@
 /* Styles for Navbar.jsx */
+nav {
+    position: sticky;
+    top: 0;
+    height: 3rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: min(4px, .3rem);
+}
+
+.nav-item {
+    text-decoration: none;
+    margin: 1rem minmax(.5rem, 5rem);
+}
+
+a.nav-item {
+    color: black;
+}
+
+.search {
+    display: inline;
+}
+
+.logo {
+    aspect-ratio: 1/1;
+    height: 100%;
+    background-color: aqua;
+}
