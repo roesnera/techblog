@@ -7,7 +7,7 @@ import HomeBottomSection from "./HomeBottomSection";
 export default function Home() {
     return <>
         <Navbar />
-        <div>
+        <div className="main">
             <HomeTopSection />
             <HomeBottomSection />
         </div>

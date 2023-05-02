@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './HomeTopSection.css';
 
 export default function HomeTopSection() {
-  
-  return <div>HomeTopSection</div>;
+  const [mainArt, setMainArt] = useState({text: "", author: ""});
+
+  const fetchMainArt = async () => {
+    const response = await fetch("http://localhost:3001/articles");
+    // console.log(response);
+    const data = await response.json();
+    // console.log(data);
+    const article = data[0];
+    setMainArt(article);
+  }
+
+  useEffect(() => {
+    fetchMainArt();
+  }, [])
+
+  return <div className='home-top'>
+      {mainArt.text}
+    </div>
 }

@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Article from "./Article";
+import Article from "../components/Article";
 import "./ArticlePage.css";
 
 export default function ArticlePage() {
