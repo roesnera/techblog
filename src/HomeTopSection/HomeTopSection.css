@@ -1,10 +1,19 @@
 .home-top {
     color: purple;
+    background-color: rgba(44, 42, 42, 0.4);
     font-size: 4rem;
-    height: calc(.4 * 70vh);
+    height: calc(.6 * var(--main-height));
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    --webkit-line-clamp: 4;
-    --webkit-box-orient: vertical;
+    display: grid;
+    grid-template-columns: [start] 40% [median] auto [end];
+    max-width: 100%;
+}
+
+.home-top-right {
+
+}
+
+.home-top-left {
+
 }

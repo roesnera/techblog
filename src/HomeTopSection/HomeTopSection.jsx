@@ -18,6 +18,11 @@ export default function HomeTopSection() {
   }, [])
 
   return <div className='home-top'>
-      {mainArt.text}
+    <div className='home-top-left'>
+      <figure>top figure placeholder</figure>
+    </div>
+      <div className='home-top-right'>
+        {mainArt.text}
+      </div>
     </div>
 }
