@@ -3,17 +3,65 @@
     background-color: rgba(44, 42, 42, 0.4);
     font-size: 4rem;
     height: calc(.6 * var(--main-height));
-    overflow: hidden;
     text-overflow: ellipsis;
     display: grid;
-    grid-template-columns: [start] 40% [median] auto [end];
+    grid-template-columns: [start] 35% [median] auto [end];
     max-width: 100%;
 }
 
-.home-top-right {
-
+.home-top--left {
+    padding: 1rem 3rem;
 }
 
-.home-top-left {
+.home-top--left__figure {
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+}
 
+.home-top--left__figure::before {
+    content: "Featured Post";
+    position: absolute;
+    background-color: rgba(0,0,0,.25);
+    font-size: 1.5rem;
+    padding: .4rem .2rem;
+    color: white;
+}
+
+.home-top--right {
+    padding: 2rem 7rem 2rem 6rem;
+}
+
+.home-top--right__container {
+    color: rgb(33, 32, 32);
+    font-size: 1rem;
+    display: grid;
+    grid-template-rows: [start] 2.3rem [title-top] 5rem [content-top] auto [content-bottom] 2.3rem [end];
+}
+
+.home-top--right__container-row {
+    margin: 1rem 0;
+}
+
+.home-top--right__container-row__1 {
+    display: flex;
+}
+
+.home-top--right__container-row__1__item {
+    margin-right:2rem;
+}
+
+.home-top--right__container-row__2 {
+    font-size: 2.5rem;
+}
+
+.home-top--right__container-row__3 {
+    overflow: hidden;
+    
+}
+
+.home-top--right__container-row__4 {
+    display: flex;
+    justify-content: space-between;
 }

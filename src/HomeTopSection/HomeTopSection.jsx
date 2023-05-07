@@ -18,11 +18,22 @@ export default function HomeTopSection() {
   }, [])
 
   return <div className='home-top'>
-    <div className='home-top-left'>
-      <figure>top figure placeholder</figure>
+    <div className='home-top--left'>
+      <figure className='home-top--left__figure'></figure>
     </div>
-      <div className='home-top-right'>
-        {mainArt.text}
+      <div className='home-top--right'>
+        <div className='home-top--right__container'>
+          <div className='home-top--right__container-row home-top--right__container-row__1'>
+            <div className='home-top--right__container-row__1__item'>Date</div>
+            <div className='home-top--right__container-row__1__item'>ttr</div>
+          </div>
+          <div className='home-top--right__container-row home-top--right__container-row__2'>A Big Title</div>
+          <div className='home-top--right__container-row home-top--right__container-row__3'>{mainArt.text}</div>
+          <div className='home-top--right__container-row home-top--right__container-row__4'>
+            <div>Views</div>
+            <div>Likes</div>
+          </div>
+        </div>
       </div>
     </div>
 }
