@@ -7,7 +7,7 @@
     border-radius: 8px;
     padding: 1rem;
     display: grid;
-    grid-template-rows: [start] 34% [figure-bot] 3rem [title-bot] 5rem [blob-bot] 1.5rem [by-bot] 1.5rem [end];
+    grid-template-rows: [start] 40% [figure-bot] 3rem [title-bot] 7rem [blob-bot] 1.5rem [by-bot] 1.5rem [end];
     /* transform: translateY(100px) rotateY(0);
     animation: spinUp 1s ease-in-out   forwards ;
     animation-delay: calc(var(--delay) * 100ms); */
