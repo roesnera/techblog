@@ -19,7 +19,7 @@ export default function HomeBottomSection() {
 
     const renderArticles = () => {
       const renderedArray = articles.map((art, ind) => {
-        return <Article key={ind} text={art.text} author={art.author} />
+        return <Article key={ind} text={art.text} author={art.author} title={art.title} />
       });
       return renderedArray;
     }
