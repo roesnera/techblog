@@ -1,4 +1,6 @@
 per Adam, for now to run app :
 
-"npm run build && node server.js"
-"json-server -p 3001 --watch db.json"
+"npm run serve"
+
+then in a spearate terminal 
+"npm run start-server"
