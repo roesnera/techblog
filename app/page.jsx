@@ -1,6 +1,6 @@
 import styles from './page.module.css'
-import HomeTopSection from "./HomeTopSection";
-import HomeBottomSection from "./HomeBottomSection";
+import HomeTopSection from "./(components)/HomeTopSection";
+import HomeBottomSection from "./(components)/HomeBottomSection";
 
 
 export default function Home() {
