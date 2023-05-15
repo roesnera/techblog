@@ -1,11 +1,13 @@
 /* Styles for Article.jsx */
 .article {
     border: 1px solid black;
-    aspect-ratio: 5/4;
-    height: max(7rem, 17%);
-    max-width: 25%;
+    aspect-ratio: 5/6;
+    /* height: 30%; */
+    width: min(30%, 20rem);
     border-radius: 8px;
-    padding: 4px;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: [start] 40% [figure-bot] 3rem [title-bot] 7rem [blob-bot] 1.5rem [by-bot] 1.5rem [end];
     /* transform: translateY(100px) rotateY(0);
     animation: spinUp 1s ease-in-out   forwards ;
     animation-delay: calc(var(--delay) * 100ms); */
@@ -18,6 +20,30 @@
     display: -webkit-box;
     --webkit-line-clamp: 4;
     --webkit-box-orient: vertical;
+}
+
+/* .article--row {
+    margin-top: .5rem;
+} */
+
+.article-img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.article-title {
+    font-size: 1.8rem;
+    padding: 4px 0;
+}
+
+.article--row__4 {
+    margin-top: -1rem;
+}
+
+.article--row__5 {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* 

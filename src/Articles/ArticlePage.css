@@ -1,7 +1,0 @@
-/* Styles for ArticlePage.jsx */
-@import url("../../reset.css");
-
-.articles-container {
-    height: 70vh;
-    padding: 3rem;
-}

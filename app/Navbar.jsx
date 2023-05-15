@@ -1,5 +1,7 @@
+'use client';
 import { useState } from "react";
 import "./Navbar.css";
+import Link from "next/link";
 
 export default function Navbar() {
     const [searchText, setSearchText] = useState("");
@@ -19,9 +21,9 @@ export default function Navbar() {
 
     return <nav>
         <div className="logo nav-item">Logo Here</div>
-        <a className="nav-item" href="/">Home</a>
-        <a className="nav-item" href="/about">About</a>
-        <a className="nav-item" href="/articles">Articles</a>
+        <Link className="nav-item" href="/">Home</Link>
+        <Link className="nav-item" href="/about">About</Link>
+        <Link className="nav-item" href="/articles">Articles</Link>
         <form className="search nav-item" onSubmit={onFormSubmit}>
             <div className="search-svg">Search svg to go here</div>
             <input type="text" value={searchText} onChange={onSearchChange}/>

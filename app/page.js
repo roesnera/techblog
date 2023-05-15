@@ -1,16 +1,14 @@
-import "./Home.css";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import styles from './page.module.css'
 import HomeTopSection from "./HomeTopSection";
 import HomeBottomSection from "./HomeBottomSection";
 
+
 export default function Home() {
-    return <>
-        <Navbar />
+    console.log("Home called");
+  return ( <>
         <div className="main">
             <HomeTopSection />
             <HomeBottomSection />
         </div>
-        <Footer />
-    </>
+    </>)
 }
