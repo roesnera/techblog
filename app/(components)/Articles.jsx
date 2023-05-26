@@ -3,10 +3,8 @@ import Article from "./Article";
 import "./Articles.css";
 
 export default async function Articles() {
-
-
     const fetchArticles = async () => {
-      const fetchedArticles = await fetch("http://localhost:3001/articles");
+      const fetchedArticles = await fetch("http://localhost:3001/articles", { next: { revalidate: 60 }});
       // console.log(fetchedArticles);
       const parsedArticles = await fetchedArticles.json();
       // console.log(parsedArticles);
