@@ -1,6 +1,8 @@
 /* Styles for Navbar.jsx */
 nav {
     position: sticky;
+    background-color: gray;
+    z-index: 100;
     top: 0;
     height: 3rem;
     border-bottom: 1px solid black;

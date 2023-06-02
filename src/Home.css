@@ -1,0 +1,10 @@
+/* Styles for Home.jsx */
+@import url("../reset.css");
+
+.main {
+    position: relative;
+    --main-height: 90vh;
+    min-height: var(--main-height);
+    width: 100vw;
+    display: block;
+}
