@@ -27,6 +27,12 @@ describe("Supabase Client", function () {
         });
     });
     describe("formatDate", function () {
-        
+        let article;
+        it('should provide a date that is formatted as "(month word) (day number), (year number)"', async function() {
+            article = article?? await fetchMainArt();
+            const date = article.created_at;
+            const regex = /[a-zA-Z]{4,9} [0-9]{1,2}, [0-9]{4}/
+            assert.isTrue(regex.test(formatDate(date)));
+        })
     })
 })
