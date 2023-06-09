@@ -1,4 +1,4 @@
-import "./Article.css";
+import "./Article.module.css";
 
 export default function Article({ text, author, title }) {
 
