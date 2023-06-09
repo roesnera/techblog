@@ -1,13 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import './HomeTopSection.css';
-import { fetchMainArt, formatDate } from '@/utils/supabase';
+import { fetchMainArticle, formatDate } from '@/utils/supabase';
 
 export default function HomeTopSection() {
   const [mainArt, setMainArt] = useState({text: "", author: "", created_at: ""});
 
   async function updateMainArticle() {
-    const mainArticle = await fetchMainArt();
+    const mainArticle = await fetchMainArticle();
     setMainArt(mainArticle);
   }
 

@@ -4,7 +4,7 @@ import './HomeTopSection.css';
 export default function HomeTopSection() {
   const [mainArt, setMainArt] = useState({text: "", author: ""});
 
-  const fetchMainArt = async () => {
+  const fetchMainArticle = async () => {
     const response = await fetch("http://localhost:3001/articles");
     // console.log(response);
     const data = await response.json();
@@ -14,7 +14,7 @@ export default function HomeTopSection() {
   }
 
   useEffect(() => {
-    fetchMainArt();
+    fetchMainArticle();
   }, [])
 
   return <div className='home-top'>

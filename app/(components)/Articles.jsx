@@ -1,14 +1,14 @@
 // "use server";
 import Article from "./Article";
 import "./Articles.css";
-import { snagPosts } from "@/utils/supabase";
+import { fetchAllArticles } from "@/utils/supabase";
 
 export const revalidate = 60;
 
 export default async function Articles() {
 
 
-  const articles = await snagPosts();
+  const articles = await fetchAllArticles();
 
   // const articles = await fetchArticles();
 

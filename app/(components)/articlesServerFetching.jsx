@@ -4,7 +4,7 @@ import Articles from "./Articles";
 
 export const revalidate = 10;
 
-export async function snagPosts() {
+export async function fetchAllArticles() {
     const { data, error } = await supabase.from("post").select("*");
     // .eq("post_id", 1);
 

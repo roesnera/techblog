@@ -6,7 +6,7 @@ export const supabase = createClient(
   );
 
   // fetches all articles from db
-  export async function snagPosts() {
+  export async function fetchAllArticles() {
     const { data, error } = await supabase.from("post").select("*");
     // .eq("post_id", 1);
 
@@ -18,8 +18,8 @@ export const supabase = createClient(
   }
 
   // picks one article, currently picking based on id number
-  export async function fetchMainArt(){
-    const articlesList = await snagPosts();
+  export async function fetchMainArticle(){
+    const articlesList = await fetchAllArticles();
     // console.log(articlesList);
     let highId = 0;
     const articleToFeature = articlesList.reduce((accumulatorArticle, currentArticle) => {if(currentArticle.post_id >= highId) {highId = currentArticle.post_id; return currentArticle}})
@@ -55,7 +55,7 @@ export const supabase = createClient(
   }
 
   export async function getArticlesByAuthor(author) {
-    const articles = await snagPosts();
+    const articles = await fetchAllArticles();
     const articlesByAuthor = [];
     for(const article of articles){
         if(article.author === author){
@@ -79,7 +79,7 @@ export const supabase = createClient(
   */
   
   async function testingDateFormat() {
-    const post = await fetchMainArt();
+    const post = await fetchMainArticle();
     const postgresDate = post.created_at;
     console.log(postgresDate);
     const date = formatDate(postgresDate);
