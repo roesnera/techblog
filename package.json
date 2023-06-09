@@ -2,12 +2,14 @@
   "name": "next-practice-repo",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start-server": "json-server -p 3001 --watch db.json"
+    "start-server": "json-server -p 3001 --watch db.json",
+    "test": "mocha"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.24.0",
@@ -17,5 +19,9 @@
     "next": "13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
   }
 }
