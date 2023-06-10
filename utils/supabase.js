@@ -1,8 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
+import 'dotenv/config';
 // Create a single supabase client for interacting with your database
 export const supabase = createClient(
-    "https://ljfwsogkiqpmhirpcmgo.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqZndzb2draXFwbWhpcnBjbWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU1NTM5MDIsImV4cCI6MjAwMTEyOTkwMn0.CbY8JmzmbWg7DCU86aJuc2aIyKKFJgtwLrqx_we7n9M"
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANONYMOUS_KEY
   );
 
   // fetches all articles from db
@@ -65,7 +66,25 @@ export const supabase = createClient(
     return articlesByAuthor;
   }
 
+  // I cannot get fetch data from the post-category or a duplicate table that I made for this purpose
+  // I even copy pasted the code from supabase and it still isn't returning any data at all
+  // Supabase returns a 200 status code, so the table is found,
+  // but we don't get any actual data back from it . . .
+  export async function getArticleIdsByTagId(tagId){
+    
+  let { data: post_category_duplicate, error } = await supabase
+    .from('post_category_duplicate')
+    .select('*')
+      // .eq("category_id", tagId);
+      return post_category_duplicate;
+  }
 
+  export async function getArticlesByTag(tag) {
+    const tagId = await supabase.from("category").select("category_id").eq("name", tag);
+    const articleIdsByTag = await getArticleIdsByTagId(tagId);
+    const articlesByTag = await supabase.from("post").select("*").in("post_id", articleIdsByTag);
+    return articlesByTag;
+  }
 
 
 
@@ -86,3 +105,9 @@ export const supabase = createClient(
     console.log(date);
   }
 //   testingDateFormat();
+
+  async function testingGetArticlesByTagId(id){
+    const articles = await getArticleIdsByTagId(id);
+    console.log(articles);
+  }
+  testingGetArticlesByTagId(2);

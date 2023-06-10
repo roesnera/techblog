@@ -4,6 +4,8 @@ import {
   fetchMainArticle,
   formatDate,
   getArticlesByAuthor,
+  getArticlesByTag,
+  getArticleIdsByTagId
 } from "../utils/supabase.js";
 
 // allArticles serves to cache the fetchAllArticles function call
@@ -86,4 +88,15 @@ describe("Supabase Client", function () {
       assert.isTrue(allArticlesByAuthor.length < allArticles.length);
     });
   });
+  // describe("getArticlesByTag", function () {
+  //   it("should return an array of articles", async function () {
+  //     // const articlesByTag = await getArticlesByTag("Databases");
+  //     const articleIdsByTagId = await getArticleIdsByTagId(2);
+  //     // console.log(`articlesByTag: ${articlesByTag}`);
+  //     // console.log(`articleIdsByTagId: ${articleIdsByTagId}`);
+  //     // for(const article of articlesByTag){
+  //     //   assert.isTrue(articleIdsByTagId.includes(article.id));
+  //     // }
+  //   });
+  // })
 });
