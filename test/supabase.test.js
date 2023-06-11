@@ -5,7 +5,7 @@ import {
   formatDate,
   getArticlesByAuthor,
   getArticlesByTag,
-  getArticleIdsByTagId
+  getArticleIdsByTagId,
 } from "../utils/supabase.js";
 
 // allArticles serves to cache the fetchAllArticles function call
@@ -78,26 +78,20 @@ describe("Supabase Client", function () {
   });
   describe("getArticlesByAuthor", function () {
     it("should return an array", async function () {
-        allArticles = allArticles ?? (await fetchAllArticles());
-        const allArticlesByAuthor = await getArticlesByAuthor("Adam Roesner");
-        assert.isArray(allArticlesByAuthor);
-    })
+      allArticles = allArticles ?? (await fetchAllArticles());
+      const allArticlesByAuthor = await getArticlesByAuthor("Adam Roesner");
+      assert.isArray(allArticlesByAuthor);
+    });
     it("should return fewer than all allArticles", async function () {
       allArticles = allArticles ?? (await fetchAllArticles());
       const allArticlesByAuthor = await getArticlesByAuthor("Adam Roesner");
       assert.isTrue(allArticlesByAuthor.length < allArticles.length);
     });
   });
-  /* 
-    TODO: implement tests for getArticlesByTag,
-    see supabase.js file test functions for inspiration
-  */
-  
-
   describe("getArticlesByTag", function () {
     it("should return an array of articles", async function () {
       const articlesByTag = await getArticlesByTag("databases");
-      for(const article of articlesByTag){
+      for (const article of articlesByTag) {
         assert.hasAllKeys(article, [
           "title",
           "author",
@@ -108,5 +102,5 @@ describe("Supabase Client", function () {
         ]);
       }
     });
-  })
+  });
 });
