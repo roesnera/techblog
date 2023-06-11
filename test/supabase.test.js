@@ -89,8 +89,12 @@ describe("Supabase Client", function () {
     });
   });
   describe("getArticlesByTag", function () {
+    const tags = ["databases", "networking", "blog"];
+    const tagsLen = tags.length;
+    let articlesByTag;
     it("should return an array of articles", async function () {
-      const articlesByTag = await getArticlesByTag("databases");
+      const randomIndex = Math.floor(Math.random() * tagsLen);
+      articlesByTag = articlesByTag ?? await getArticlesByTag(tags[randomIndex]);
       for (const article of articlesByTag) {
         assert.hasAllKeys(article, [
           "title",

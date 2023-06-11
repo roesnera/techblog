@@ -71,6 +71,7 @@ export async function getArticlesByAuthor(author) {
 // but we don't get any actual data back from it . . .
 // Somehow I had RLS enabled for this table - even without a policy I couldn't get any data
 export async function getArticleIdsByTagId(tagId) {
+  console.log("getArticleIdsByTagId called")
   let { data } = await supabase
     .from("post-category")
     .select("post_id")
@@ -78,23 +79,26 @@ export async function getArticleIdsByTagId(tagId) {
   return data;
 }
 /* 
-    TODO: refactor this to make fewer async requests
+    FIXME: refactor this to make fewer async requests
   */
 export async function getArticlesByTag(tag) {
   const { data: tagId } = await supabase
     .from("category")
     .select("category_id")
     .eq("name", tag);
-  const postIds = await getArticleIdsByTagId(tagId[0].category_id);
-  const postIdsArr = [];
-  for (const entry of postIds) {
-    postIdsArr.push(entry.post_id);
+  if(!!tagId[0]){
+    const postIds = await getArticleIdsByTagId(tagId[0].category_id);
+    const postIdsArr = [];
+    for (const entry of postIds) {
+      postIdsArr.push(entry.post_id);
+    }
+    const { data: posts } = await supabase
+      .from("post")
+      .select("*")
+      .in("post_id", postIdsArr);
+    return posts;
   }
-  const { data: posts } = await supabase
-    .from("post")
-    .select("*")
-    .in("post_id", postIdsArr);
-  return posts;
+  return [];
 }
 
 /* 
