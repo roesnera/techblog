@@ -9,22 +9,15 @@ export const supabase = createClient(
   // fetches all articles from db
   export async function fetchAllArticles() {
     const { data, error } = await supabase.from("post").select("*");
-    // .eq("post_id", 1);
-
-    !error ? null : console.log(error);
 
     return data;
-
-    // textField.innerText = data[0].text;
   }
 
   // picks one article, currently picking based on id number
   export async function fetchMainArticle(){
     const articlesList = await fetchAllArticles();
-    // console.log(articlesList);
     let highId = 0;
     const articleToFeature = articlesList.reduce((accumulatorArticle, currentArticle) => {if(currentArticle.post_id >= highId) {highId = currentArticle.post_id; return currentArticle}})
-    // console.log(articleToFeature);
     return articleToFeature;
   }
 
@@ -47,7 +40,6 @@ export const supabase = createClient(
     const year = postgresDate.slice(0,4);
     const month = postgresDate.slice(5,7);
     let day = postgresDate.slice(8,10);
-    const timeStart = postgresDate.indexOf("T")+1;
     if(day.charAt(0)==="0"){
         day = day.slice(1);
     }
@@ -70,20 +62,24 @@ export const supabase = createClient(
   // I even copy pasted the code from supabase and it still isn't returning any data at all
   // Supabase returns a 200 status code, so the table is found,
   // but we don't get any actual data back from it . . .
+  // Somehow I had RLS enabled for this table - even without a policy I couldn't get any data
   export async function getArticleIdsByTagId(tagId){
-    
-  let { data: post_category_duplicate, error } = await supabase
-    .from('post_category_duplicate')
-    .select('*')
-      // .eq("category_id", tagId);
-      return post_category_duplicate;
+  let { data } = await supabase
+    .from('post-category')
+    .select('post_id')
+    .eq("category_id", tagId);
+  return data;
   }
 
   export async function getArticlesByTag(tag) {
-    const tagId = await supabase.from("category").select("category_id").eq("name", tag);
-    const articleIdsByTag = await getArticleIdsByTagId(tagId);
-    const articlesByTag = await supabase.from("post").select("*").in("post_id", articleIdsByTag);
-    return articlesByTag;
+    const { data: tagId } = await supabase.from("category").select("category_id").eq("name", tag);
+    const postIds = await getArticleIdsByTagId(tagId[0].category_id);
+    const postIdsArr = [];
+    for(const entry of postIds){
+      postIdsArr.push(entry.post_id);
+    }
+    const { data: posts } = await supabase.from("post").select("*").in("post_id", postIdsArr);
+    return posts;
   }
 
 
@@ -110,4 +106,10 @@ export const supabase = createClient(
     const articles = await getArticleIdsByTagId(id);
     console.log(articles);
   }
-  testingGetArticlesByTagId(2);
+  // testingGetArticlesByTagId(2);
+
+  async function testingGetArticlesByTag(tag){
+    const articles = await getArticlesByTag(tag);
+    console.log(articles);
+  }
+  // testingGetArticlesByTag("databases");

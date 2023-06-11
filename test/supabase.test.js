@@ -88,15 +88,25 @@ describe("Supabase Client", function () {
       assert.isTrue(allArticlesByAuthor.length < allArticles.length);
     });
   });
-  // describe("getArticlesByTag", function () {
-  //   it("should return an array of articles", async function () {
-  //     // const articlesByTag = await getArticlesByTag("Databases");
-  //     const articleIdsByTagId = await getArticleIdsByTagId(2);
-  //     // console.log(`articlesByTag: ${articlesByTag}`);
-  //     // console.log(`articleIdsByTagId: ${articleIdsByTagId}`);
-  //     // for(const article of articlesByTag){
-  //     //   assert.isTrue(articleIdsByTagId.includes(article.id));
-  //     // }
-  //   });
-  // })
+  /* 
+    TODO: implement tests for getArticlesByTag,
+    see supabase.js file test functions for inspiration
+  */
+  
+
+  describe("getArticlesByTag", function () {
+    it("should return an array of articles", async function () {
+      const articlesByTag = await getArticlesByTag("databases");
+      for(const article of articlesByTag){
+        assert.hasAllKeys(article, [
+          "title",
+          "author",
+          "text",
+          "created_at",
+          "post_id",
+          "creator_account",
+        ]);
+      }
+    });
+  })
 });
