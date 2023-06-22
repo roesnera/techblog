@@ -3,11 +3,11 @@
     border: 1px solid black;
     aspect-ratio: 5/6;
     /* height: 30%; */
-    width: min(30%, 20rem);
+    width: min(30%, 27rem);
     border-radius: 8px;
     padding: 1rem;
     display: grid;
-    grid-template-rows: [start] 40% [figure-bot] 3rem [title-bot] 7rem [blob-bot] 1.5rem [by-bot] 1.5rem [end];
+    grid-template-rows: [start] 40% [figure-bot] 17% [title-bot] 35% [blob-bot] 5% [by-bot] 3% [end];
     /* transform: translateY(100px) rotateY(0);
     animation: spinUp 1s ease-in-out   forwards ;
     animation-delay: calc(var(--delay) * 100ms); */
